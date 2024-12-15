@@ -1,0 +1,29 @@
+.js-add-to-cart{
+    background-color: #e8ded0;
+    border: none !important;
+    padding: 8px 28px;
+  }
+  .js-add-to-cart:hover{
+    background-color: #d3e061 !important;
+  }
+  #stars-span{
+    color: rgb(173, 173, 173) !important;
+  }
+  .product-details{
+    border: 1px solid rgb(202, 202, 202);
+  }
+
+  .stock-span{
+    color: #8a9716;
+    font-size: 1.3rem;
+  }
+
+  .dimension{
+      color: #8a9716;
+  }
+
+  select {
+    border: 1px #d3e061 solid;
+    padding: 3px;
+  }
+  

@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+            :root{
+        --main-color-dashboard: #928364;
+        --main-color-hover: #d2c9b8;
+    }
+    *{
+        user-select: none;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+
+    .btn-main-dashboard{
+        background-color: var(--main-color-dashboard);
+        color: white;
+        transition: 0.3s;
+    }
+
+    .btn-main-dashboard:hover{
+        background-color: var(--main-color-hover)!important;
+        color: white;
+    }
+    .navbar{
+        background-color: var(--main-color-dashboard)  !important;
+    }
+
+    
+    .side-left{
+        padding-left: 0;
+    }
+    .main-nav{
+        background-color: #fff;
+        color: aliceblue !important;
+    }   
+
+   
+    .fas, .fa-bars{
+        color: white !important;
+        font-size: 2rem !important;
+    }
+   
+    .btn-collapse-sidebar{
+        font-size: 1.2rem;
+        background-color: var(--main-color-dashboard);
+        width: 35px;
+        height: 35px;
+        margin-left: 0.8rem;
+        border-radius: 50%;
+        padding: 0.5rem;
+        text-align: center;
+        position: relative;
+        border: none;
+    }
+  
+    .fa-chevron-left{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    #sidebar {
+        min-height:100vh!important;
+        overflow:auto!important;
+        overflow-y: auto!important;
+        transition:all 0.3s ;
+        box-shadow: 0 10px 30px -12px rgb(0 0 0 / 42%), 0 4px 25px 0px rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+        background-color: var( --main-color-dashboard)  !important;
+
+    }
+    
+    #sidebar .nav-item-overload{
+        width: 100%;
+        display: inline-block;
+        padding-bottom: 1rem !important;
+        color: gray!important;
+        
+    }
+    #sidebar .nav-item-overload:hover{
+        background-color: rgba(225, 225, 226,0.5);
+    }
+    
+    #sidebar .nav-link span{
+        color: black !important; 
+        font-size: 20px;
+        font-weight: bold;
+    }
+    #sidebar .nav-link i {
+        color: white !important; 
+    }
+    #sidebar #nav-tab span {
+        text-transform:capitalize;
+        display:inline-block;
+        padding-left: 10px;
+        font-size: 16px;
+        vertical-align: middle;
+    }
+    
+    .dropdown-menu{
+        margin-left: -50px;
+        font-size: 12px;
+    }
+        @media only screen and (min-width:992px) {
+            #sidebar.active {
+                width: 100px;
+               
+            }
+        .fixed-width{
+            width:200px;
+        }
+        #sidebar.active .sidebar-header .logo span {
+            display: none;
+            transition: all 0.5s ease;
+            }
+            
+            #sidebar.active .sidebar-header .logo {
+                display: inline-block;
+                text-align: center;
+                transition: all 0.5s ease;
+            }
+        
+            #sidebar.active .sidebar-header .logo img {
+                transform: scale(2);
+            }
+                #sidebar.active  span {
+                    display: none!important;
+                    transition: all 0.5s ease;
+                }
+            #sidebar.active ul li button {
+                text-align: center;
+            }
+        }
+     
+
+        @media only screen and (max-width:992px ){
+            #sidebar {
+                position:fixed;
+                top: 0;
+                bottom:0;
+                z-index: 10;
+                width: 200px;
+                transform:translatex(-100%);
+                transition: all 150ms linear;
+                z-index: 10000;
+            }	
+        }
+
+        #sidebar.show-nav{
+            transform:translatex(0%);
+            opacity:1;
+            display:block;
+            visibility:visible;
+            z-index:15;
+            background-color: white;
+        }
+
+        .tab-Container{
+            width: 90%;
+            margin: 10px auto;
+        }
+        
+        .center-img{
+            width: 100%;
+            max-width: 70px; 
+            height: auto; 
+            display: block; 
+            margin: 0 auto !important ;
+            padding: 0;
+            background-size: cover;
+            background-position: center;
+        }
+       
+        
+        .tab-Container{
+            position: relative;
+        }
+        
+        
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+        }
+
+       
+        i:hover{
+            cursor: pointer;
+        } 
+
+        #entry {
+            width: 50px; 
+        }
+        
+        @media screen and (max-width: 768px) {
+            .controls {
+                flex-direction: column;
+            }
+        
+            .search-container, .table-entry {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+          
+        }
+        .card-number {
+            font-size: 24px; 
+            color: black;
+        }
+        
+        .card-type {
+            font-size: 16px; 
+            color: black;
+        }
+        
+        .card {
+            width: 90%;
+            max-width: 300px; 
+            height: auto;
+            border-radius: 8px; 
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .card-icon {
+            color:var(--main-color-dashboard);
+            font-size: 40px;
+            vertical-align:middle;
+        }
+        .card-content{
+            color:#888;
+            text-align: center;
+            padding:10px 0!important; 
+        }
+
+        @media only screen and (max-width:992px ){
+            .card {
+                width: 70%;
+                max-width: 300px; 
+                height: auto;
+                
+            }
+        }
+        @media only screen and (max-width:576px ){
+            .card {
+                width: 60% !important;
+                text-align: center;
+                margin: 5px auto !important;
+            }
+            .cardRow,.container{
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: center !important;
+                align-items: center !important;
+            }
+            .cardRow{
+                width: 100% !important;
+            }
+        }
+        .Graphs{
+            width:90%;
+            margin: 10px auto; 
+            padding: 20px;
+            min-height: 200px;
+        }
+        .Graphs .box{
+            margin: 0px 10px;
+            column-gap: 3px;
+            background-color: #1677e000;
+            box-shadow: 0.7px 2px rgba(0,0,0,0.08);
+            border-radius: 20px;
+        }
+        #mychart{
+            transform: scale(120);
+        }
+        
+       
+        @media only screen and (max-width:992px ){
+            .speciallabel{
+                color: var(--main-color-dashboard);
+                position: absolute;
+                top:0;
+            }
+            .rightlabel{
+                position: absolute;
+                right:100px
+            }
+        }
+
+        #myChart,#myChart2{
+            min-height: 300px;
+        }
+        .product-tableContainer,.Order{
+            height: 70vh;
+            overflow-y: auto;
+        }
+        .Order{
+            margin-top: 20px;
+        }
+        body{
+            background-color: rgba(245, 245, 245, 0.822)
+            }
+      
+        .shopButton {
+            font-family: 'Poppins', sans-serif;
+            text-transform: uppercase;
+            background-color: var(--main-color-dashboard); 
+            border: 0;
+        }
+       
+        .card{
+            height: 105px;
+        }
+        .small{
+            font-size: 14px;
+        }
+        .lessorderName{
+            font-size: 16px;
+        }
+        .lessorderNumber{
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row flex-nowrap">
+            <!-- sidebar -->
+            <div class="side-left pl-2 col-lg-2" id="sidebar">
+                <nav class="mx-auto">
+                    <div class="sidebar-header">
+                        <div class="logo py-4 pb-5">
+                            <a href="../home.html">
+                                <img src="../images/made-logo-desktop.svg" class="w-70 ms-4 d-inline-block" style="height: 30px !important;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="nav flex-column" id="nav-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link nav-item-overload text-left sidetab" id="nav-product-tab" href="./sellerHome.html">
+                            <i class="fa-solid fa-store card-icon"></i>
+                            <span class="text-dark">Products</span>
+                        </a>
+                        <a class="nav-link nav-item-overload text-left sidetab" id="nav-home-tab" href="./sellerAnalysis.html">
+                            <i class="fa-solid fa-chart-simple card-icon"></i>
+                            <span class="text-dark">Analysis</span>
+                        </a>
+                    </div>
+                </nav>
+            </div>
+
+            <!-- main part -->
+            <div class="main-part px-0 col-dm-12 col-lg-10" id="content">
+                <div id="NavContainer"></div>
+                <nav class="navbar navbar-expand main-nav">
+                    <div class="navbar-collapse main-nav-icons w-100" id="navbarNav">
+                        <ul class="navbar-nav w-50 ms-auto d-flex justify-content-evenly">
+                            <li class="nav-item">
+                                <a class="nav-link mr-3" href="../home.html">
+                                    <i class="fa-solid fa-house fas icon-nav-main" title="Home"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <i class="fa-solid fa-bars d-inline-block d-lg-none ml-auto more-button text-dark" id="toggle-sidebar"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="container mt-4">
+                    <div class="row cardRow">
+                        <div class="card-container col-sm-6 col-lg-4 col-12">
+                            <div class="card my-2 mx-1 row">
+                                <span class="pr-0 py-2 col-4 d-inline-block">
+                                    <i class="fa-solid fa-sack-dollar card-icon"></i>
+                                </span>
+                                <div class="card-content px-2 py-2 col-8">
+                                    <div class="card-type">Wallet</div>
+                                    <div class="card-number wallet"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-container col-sm-6 col-lg-4 col-12">
+                            <div class="card my-2 mx-1 row">
+                                <span class="pr-0 py-2 col-4 d-inline-block">
+                                    <i class="fa-solid fa-arrow-trend-up card-icon pl-3"></i>
+                                </span>
+                                <div class="card-content px-2 py-2 col-8">
+                                    <div class="card-type TrendName"></div>
+                                    <div class="card-number TrendNumber"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-container col-sm-6 col-lg-4 col-12">
+                            <div class="card my-2 mx-1 row">
+                                <span class="pr-0 py-2 col-4 d-inline-block">
+                                    <i class="fa-solid fa-arrow-trend-down card-icon pl-3"></i>
+                                </span>
+                                <div class="card-content px-2 py-2 col-8">
+                                    <div class="card-number lessorderName"></div>
+                                    <div class="card-type lessorderNumber text-danger"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box col-12 mx-auto my-5">
+                        <canvas id="myChart"></canvas>
+                    </div>
+
+                    <div class="row cardRow my-5">
+                        <div class="box col-md-8 col-12">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                        <div class="box col-md-4 col-12">
+                            <canvas id="myChart3"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script type="module"">
+        import { OrderForSeller, GetSellerProduct } from "../js/helperFileForSeller.js";
+import {  ShowSideBar } from "../js/helperFileForSeller.js";
+import { orders } from '../js/database.js';
+
+if (JSON.parse(localStorage.getItem("Active User")).role != "Seller") {
+    alert("You are not authorized to access this page.");
+    window.location.href = "../home.html";
+}
+
+
+
+// Modified Product Statistics
+let modifiedProdStats = {
+    No_Of_Product: GetSellerProduct().length,
+    productQuantityData:each_product_quantity()
+};
+
+// Order Statistics
+if (localStorage.getItem("Orders") == null) {
+    localStorage.setItem("Orders", JSON.stringify(orders));
+}
+let _orders = JSON.parse(localStorage.getItem("Orders"));
+let modifiedOrder = OrderForSeller(_orders); // from helper file
+let orderedProduct = [];
+let repeated = [];
+
+// Aggregate orders by product
+for (let i = 0; i < modifiedOrder.length; i++) {
+    if (repeated.includes(modifiedOrder[i].productName)) {
+        continue;
+    }
+    let quantity = parseInt(modifiedOrder[i].Quantity);
+    for (let j = i + 1; j < modifiedOrder.length; j++) {
+        if (modifiedOrder[i].productName === modifiedOrder[j].productName) {
+            quantity += parseInt(modifiedOrder[j].Quantity);
+        }
+    }
+    orderedProduct.push({ productName: modifiedOrder[i].productName, quantity });
+    repeated.push(modifiedOrder[i].productName);
+}
+
+let SellerWallet = modifiedOrder.filter(order => order.status == "delivered")
+.reduce((total, order) => total + order.TotalPrice - 50, 0); // the initial value is zero to  total to make summation 
+
+let LessOrder = [];
+let found = false;
+GetSellerProduct().forEach(Product => {
+    if (!(orderedProduct.map(item => item.productName).includes(Product.name))) {
+        found = true;
+        LessOrder.push({ productname: Product.name, quantity: 0 }); // 0 here means no order for this product yet
+        return;
+    }
+});
+if (!found) { // if there wasn't a product that hasn't been ordered yet --> then get the least ordered product
+LessOrder.push({
+        productname: orderedProduct.find(item => item.quantity == Math.min(...orderedProduct.map(order => order.quantity))).productName,
+        quantity: Math.min(...orderedProduct.map(order => order.quantity))
+    });
+}
+
+// Create Order Statistics
+let OrderStat = {
+    TrendOrder: {
+        quantity: Math.max(...orderedProduct.map(order => order.quantity)),
+        Name: orderedProduct.find(item => item.quantity == Math.max(...orderedProduct.map(order => order.quantity))).productName
+    },
+    MostOrderedProduct: {
+        productName: orderedProduct.map(item => item.productName),
+        quantity: orderedProduct.map(item => item.quantity)
+    },
+    wallet: SellerWallet,
+    NO_Order: {
+        Total: modifiedOrder.length,
+        pending: modifiedOrder.filter(item => item.status == "pending").length,
+        delivered: modifiedOrder.filter(item => item.status == "delivered").length,
+        shipped: modifiedOrder.filter(item => item.status == "shipped").length,
+    },
+    LessOrderDemand: {
+        productname: LessOrder.map(item => item.productname)[0],
+        quantity: LessOrder.map(item => item.quantity)[0]
+    }
+};
+
+localStorage.setItem("OrderStat", JSON.stringify(OrderStat));
+
+// UI Elements
+let Wallet = document.getElementsByClassName("wallet")[0];
+let All_product = document.getElementsByClassName("allproduct")[0];
+let TrendName = document.getElementsByClassName("TrendName")[0];
+let TrendNumber = document.getElementsByClassName("TrendNumber")[0];
+let LessDemandName = document.getElementsByClassName("lessorderName")[0];
+let LessDemandNum = document.getElementsByClassName("lessorderNumber")[0];
+let btn_show_sidebar = document.getElementById("toggle-sidebar");
+
+// Make the sidebar appear on small screens
+btn_show_sidebar.addEventListener("click", ShowSideBar);
+
+// Extract data for product and order statistics
+let prod_name = modifiedProdStats.productQuantityData.map(item => item.productname);
+let prod_quantity = modifiedProdStats.productQuantityData.map(item => item.productQuantity);
+let prod_No = modifiedProdStats.No_Of_Product;
+
+let TrendPrdName = OrderStat.TrendOrder.Name;
+let TrendPrdQtn = OrderStat.TrendOrder.quantity;
+let DemandeOrder = OrderStat.MostOrderedProduct.quantity;
+let productName = OrderStat.MostOrderedProduct.productName;
+let Seller_Wallet = OrderStat.wallet;
+let LowDemand_Name = OrderStat.LessOrderDemand.productname;
+let LowDemand_No = OrderStat.LessOrderDemand.quantity;
+
+Wallet.innerHTML = Seller_Wallet + " EGP";
+TrendName.innerHTML = TrendPrdName;
+TrendNumber.innerHTML = `Up to ${TrendPrdQtn} times`;
+LessDemandName.innerHTML = LowDemand_Name;
+LessDemandName.classList.add("small");
+if (LowDemand_No == 0) {
+    LessDemandNum.innerHTML = "Not Ordered Yet";
+} else {
+    LessDemandNum.innerHTML = `Down to only ${LowDemand_No} times`;
+}
+
+var getctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(getctx, {
+    type: 'bar',
+    data: {
+        labels: productName,
+        datasets: [{
+            label: 'Most Ordered Product',
+            data: DemandeOrder,
+            backgroundColor: [
+                'rgba(210, 180, 140, 1)',
+                'rgba(188, 143, 143, 1)',
+                'rgba(101, 67, 33, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(200, 159, 64, 1)',
+                'rgba(150, 100, 210, 1)',
+                'rgba(255, 120, 160, 1)',
+                'rgba(120, 160, 105, 1)',
+            ],
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        height: 1000,
+        scales: {
+            y: { beginAtZero: true }
+        },
+        plugins: {
+            legend: { display: true, position: 'top' },
+        },
+    }
+});
+
+// Chart for Product Quantity
+var getctx2 = document.getElementById('myChart2').getContext('2d');
+var myChart2 = new Chart(getctx2, {
+    type: 'bar',
+    data: {
+        labels: prod_name,
+        datasets: [{
+            label: 'Product Quantity Chart',
+            data: prod_quantity,
+            backgroundColor: [
+                'rgba(210, 180, 140, 1)',
+                'rgba(188, 143, 143, 1)',
+                'rgba(101, 67, 33, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(200, 159, 64, 1)',
+                'rgba(150, 100, 210, 1)',
+                'rgba(255, 120, 160, 1)',
+                'rgba(120, 160, 105, 1)',
+            ],
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+            x: { beginAtZero: false, min: 0 },
+            y: { beginAtZero: true },
+        },
+        plugins: {},
+    }
+});
+
+// Doughnut chart for Order Status
+let Total_No_Order = OrderStat.NO_Order.Total;
+let Pending_NO = OrderStat.NO_Order.pending;
+let delivered_NO = OrderStat.NO_Order.delivered;
+let Shipped_NO = OrderStat.NO_Order.shipped;
+
+var getctx3 = document.getElementById('myChart3').getContext('2d');
+var myChart3 = new Chart(getctx3, {
+    type: 'doughnut',
+    data: {
+        labels: ["Pending Order", "Deliver Order", "Shipped Order"],
+        datasets: [{
+            label: 'Number of Order',
+            data: [Pending_NO, delivered_NO, Shipped_NO],
+            backgroundColor: [
+                'rgba(210, 180, 140, 1)',
+                'rgba(188, 143, 143, 1)',
+                'rgba(101, 67, 33, 1)',
+            ],
+        }]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+            title: {
+                display: true,
+                text: `Order Count (Total=${Total_No_Order})`,
+                fontSize: 16,
+            },
+        },
+    }
+});
+
+function each_product_quantity() {
+    let arr = [];
+    for (let i = 0; i < GetSellerProduct().length; i++) {
+        let obj = {
+            productname: GetSellerProduct()[i].name,
+            productQuantity: GetSellerProduct()[i].quantity
+        };
+        arr.push(obj);
+    }
+    return arr;
+}
+    </script>
+    <script src="../js/database.js" type="module"></script>
+</body>
+
+</html>

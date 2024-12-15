@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="../css/registerContainer.css" rel="stylesheet">
+    <style>
+        
+
+        :root {
+            --bg-color-button: #000;
+            --bg-color: white;
+        }
+
+        body {
+            font-family: "DM Sans", sans-serif;
+            overflow-x: hidden;
+            background-color: var(--bg-color);
+
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .navbar-nav a {
+            position: relative;
+        }
+
+        .navbar-nav a::after {
+            position: absolute;
+            content: "";
+            background-color: #434342;
+            width: 0%;
+            height: 2px;
+            left: 50%;
+            bottom: -2%;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .navbar-nav a:hover::after {
+            width: 80%;
+            left: 10%;
+        }
+
+        .container-for-register {
+            border: 3px solid white;
+            box-shadow: -5px 5px 20px gray;
+            background-color: white;
+            margin: 4% auto;
+            border-radius: 10px;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .container-for-register h2 {
+            color: black;
+            margin: 15px;
+        }
+
+        input[type=text],
+        input[type=email],
+        input[type=password],
+        input[type=number] {
+            background-color: var(--bg-color);
+
+        }
+
+        .input-group i {
+            display: flex;
+            justify-content: center;
+            height: 58px;
+            background-color: transparent;
+            border: none;
+        }
+
+        .eye {
+            height: 80%;
+            border-left: 1px solid;
+        }
+
+        .eye:hover {
+            cursor: pointer;
+        }
+
+        .input-group {
+            color: black;
+            background-color: var(--bg-color);
+            border: 2px solid gray;
+            border-radius: 5px;
+            margin: 2px;
+            margin: 10px 0;
+        }
+
+        .input-group input {
+            width: 103%;
+            height: 30px;
+        }
+
+        .container-for-register button {
+            margin: 10px auto;
+            font-size: large;
+            font-weight: 500;
+            border: 2px solid white;
+            background-color: var(--bg-color-button);
+            color: rgb(255, 255, 255);
+        }
+
+        .container-for-register button:hover {
+            background-color: white;
+            color: var(--bg-color-button);
+            border: 2px solid var(--bg-color-button);
+            transition: 0.3s;
+        }
+
+        .container-for-register a {
+            color: var(--bg-color-button);
+            transition: 0.3s;
+        }
+
+        .container-for-register a:hover {
+            background-color: black;
+            color: white;
+        }
+
+        .container-for-register a {
+            padding-bottom: 30px;
+        }
+
+        form a {
+            font-weight: bold;
+            color: highlight;
+        }
+
+        .navbar {
+            background-color: white;
+        }
+
+        .navbar img {
+            width: 40%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid ">
+        <div class="row">
+            <nav class="navbar navbar-expand-md fs-5 fw-bold">
+
+                <a class="navbar-brand  m-0" href="../home.html"><img class=" ms-3 ms-md-5 d-inline-block w-50"
+                        src="../images/made-logo-desktop.svg" alt="logo"></a>
+                <button class="navbar-toggler me-4 me-md-5" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item ms-3">
+                            <a class="nav-link " aria-current="page" href="../home.html">Home</a>
+                        </li>
+                        <li class="nav-item ms-3 me-md-5">
+                            <a class="nav-link" href="./products.html">Products</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <main style="min-height: calc(100vh - 56px)" class="d-flex justify-content-center align-items-center">
+
+            <div class="main-photo col-4 d-none d-lg-block">
+                <img src="../images/Made Furniture.png" alt="" class="w-100">
+            </div>
+            <div class="main-details col-12 col-lg-8">
+                <div class="container-for-register row col-10 col-sm-8 col-md-6 col-lg-6">
+                    <h2 class="col-12 ">Sign Up In Made</h2>
+                    <form class="to-be-validated" novalidate action="./login.html">
+                        <div class="input-group row">
+                            <!-- UserName -->
+                            <div class="col-1"><i class="fs-3 fa fa-user input-group-text "></i></div>
+                            <div class="form-floating">
+                                <input type="text" class="col-auto form-control" id="name" placeholder="Username"
+                                    required >
+                                <label class="ms-2" for="name">Name</label>
+                                <div class="valid-feedback"> <!--bootstrap class-->
+                                    Looks good!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Name must be greater than 3 chars And can have only white spaces no special characters or digits.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- E-Mail -->
+                        <div class="input-group row">
+                            <div class="col-1"><i class="fs-3 fa fa-envelope input-group-text"></i></div>
+                            <div class="form-floating">
+                                <input type="email" class="form-control" id="email" placeholder="Email" required
+                                   >
+                                <label class="ms-2" for="email">E-mail</label>
+                                <div class="valid-feedback">
+                                    Looks Fine!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please Enter a valid E-mail or the E-mail is already in use.
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Phone-Number -->
+                        <div class="row input-group">
+                            <div class="col-1"><i class="fs-3 fa fa-phone input-group-prepend input-group-text"></i>
+                            </div>
+                            <div class="form-floating">
+                                <input type="number" class="form-control" id="phone" placeholder="Phone Number"
+                                    min="00000000000" required pattern="^(010|011|012|015)[0-9]{11}$">
+                                <label class="ms-2" for="phone">Phone Number</label>
+                                <div class="valid-feedback">
+                                    Looks Fine!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Phone number must start with (010 || 011 || 012 || 015).
+                                </div>
+                            </div>
+                        </div>
+                        <!-- address -->
+                        <div class="row input-group">
+                            <div class="col-1"><i
+                                    class="fs-3 fa-solid fa-location-dot input-group-prepend input-group-text"></i>
+                            </div>
+                            <div class="form-floating">
+                                <input required type="text" class="form-control" id="address" placeholder="address">
+                                <label class="ms-2" for="address">Address</label>
+                                <div class="valid-feedback">
+                                    Looks Fine!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Wrong Data, Please Enter Your Address in this Format(Gov,City,Street).
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Password -->
+                        <div class="row input-group">
+                            <div class="col-1"><i class="fs-3 fa fa-lock input-group-prepend input-group-text"></i>
+                            </div>
+                            <div class="col form-floating">
+                                <input type="password" class="form-control" id="password" placeholder="Password"
+                                    required>
+                                <label class="ms-2" for="password">Password</label>
+                                <div class="valid-feedback">
+                                    Looks Fine!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Password must contain at least one uppercase letter, one lowercase letter, one
+                                    digit, one special character, and be at least 8 characters long.
+                                </div>
+                            </div>
+                            <span class="eye col-1 me-3">
+                                <i id="ShowPassword" class="fs-4 input-group-text fa-solid fa-eye"></i>
+                            </span>
+                        </div>
+                        <!-- password check -->
+                        <div class="row input-group">
+                            <div class="col-1"><i class="fs-3 fa fa-lock input-group-prepend input-group-text"></i>
+                            </div>
+                            <div class="form-floating">
+                                <input type="password" class="form-control" id="confirmPassword"
+                                    placeholder="Confirm Password" required minlength="8">
+                                <label class="ms-2" for="password">Confirm Password</label>
+                                <div class="valid-feedback">
+                                    Looks Fine!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Enter the same password as above.
+                                </div>
+                            </div>
+                            <span class="eye col-1 me-3">
+                                <i id="ShowconfirmPassword" class="fs-4 input-group-text fa-solid fa-eye"></i>
+                            </span>
+                        </div>
+
+
+                        <div class="col-12">
+                            <button type="submit" class="btn col-12 btn-primary btn-block">Sign Up</button>
+                        </div>
+                        <hr />
+                        <a class="d-block m-auto text-decoration-none col-lg-7 p-2 mb-3 border border-black border-2 d-flex justify-content-center rounded align-items-center"
+                            href="./login.html">Already have an Account</a>
+                    </form>
+                </div>
+            </div>
+
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"></script>
+        <script type="module">
+            import { persons } from "../js//database.js";
+            import { Person } from "../js/database.js";
+
+            // Load array of users into localStorage if not already present
+            if (localStorage.getItem("Persons") == null) {
+                const Persons = persons.map(person => person.getPerson());
+                localStorage.setItem("Persons", JSON.stringify(Persons));
+            }
+
+            // Retrieve users array from localStorage
+            const usersArr = JSON.parse(localStorage.getItem("Persons")) || [];
+
+            // Helper functions for validation
+            const checkEmail = mail => usersArr.some(user => user.email === mail);
+            const checkPhone = phone => usersArr.some(user => user.phone === phone);
+
+            // Flags for field validation
+            let nameFlag = false, emailFlag = false, passwordFlag1 = false, passwordFlag2 = false, phoneNumberFlag = false, addressFlag = false;
+
+            window.addEventListener("load", function () {
+                const nameInput = document.getElementById("name");
+                const emailInput = document.getElementById("email");
+                const passwordInput = document.getElementById("password");
+                const confirmPasswordInput = document.getElementById("confirmPassword");
+                const phoneInput = document.getElementById("phone");
+                const addressInput = document.getElementById("address");
+                const form = document.querySelector('form');
+                const showPasswordBtn = document.getElementById("ShowPassword");
+                const showconfirmPasswordBtn = document.getElementById("ShowconfirmPassword");
+
+                // Name validation
+                nameInput.addEventListener("input", function () {
+                    const isValid = /^[A-Za-z\s]{3,}$/.test(this.value); 
+                    nameFlag = isValid;
+                    this.classList.toggle("is-valid", isValid);
+                    this.classList.toggle("is-invalid", !isValid);
+                });
+
+                // Email validation
+                emailInput.addEventListener("input", function () {
+                    const isValidEmail = /^[a-z][a-z0-9_.]*@[a-z]+\.com$/.test(this.value);
+                    if (!isValidEmail) {
+                        emailFlag = false;
+                    } else if (checkEmail(this.value)) {
+                        emailFlag = false;
+                        alert("Email is already used");
+                    } else {
+                        emailFlag = true;
+                    }
+                    this.classList.toggle("is-valid", emailFlag);
+                    this.classList.toggle("is-invalid", !emailFlag);
+                });
+
+                // Password validation
+                passwordInput.addEventListener("input", function () {
+                    const isValidPassword = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$/.test(this.value);
+                    passwordFlag1 = isValidPassword;
+                    this.classList.toggle("is-valid", isValidPassword);
+                    this.classList.toggle("is-invalid", !isValidPassword);
+
+                    // Validate password confirmation
+                    validatePasswordConfirmation();
+                });
+
+                // Password confirmation validation
+                confirmPasswordInput.addEventListener("input", validatePasswordConfirmation);
+
+                function validatePasswordConfirmation() {
+                    const isMatch = passwordInput.value === confirmPasswordInput.value;
+                    passwordFlag2 = isMatch && passwordFlag1;
+                    confirmPasswordInput.classList.toggle("is-valid", passwordFlag2);
+                    confirmPasswordInput.classList.toggle("is-invalid", !passwordFlag2);
+                }
+
+                // Phone number validation
+                phoneInput.addEventListener("input", function () {
+                    const isValidPhone = /^(010|011|012|015)[0-9]{8}$/.test(this.value);
+                    if (!isValidPhone) {
+                        phoneNumberFlag = false;
+                    } else if (checkPhone(this.value)) {
+                        phoneNumberFlag = false;
+                        alert("Number is already used");
+                    } else {
+                        phoneNumberFlag = true;
+                    }
+                    this.classList.toggle("is-valid", phoneNumberFlag);
+                    this.classList.toggle("is-invalid", !phoneNumberFlag);
+                });
+
+                // Address validation
+                addressInput.addEventListener("input", function () {
+                    const addressParts = this.value.trim().split(",");
+                    const isValidAddress = addressParts.length === 3 && addressParts.every(part => part.trim().length >= 3);
+                    addressFlag = isValidAddress;
+                    this.classList.toggle("is-valid", isValidAddress);
+                    this.classList.toggle("is-invalid", !isValidAddress);
+                });
+
+                // Form submission validation
+                form.addEventListener("submit", function (e) {
+                    const isFormValid = nameFlag && emailFlag && passwordFlag1 && passwordFlag2 && phoneNumberFlag && addressFlag;
+                    if (!isFormValid) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        // Highlight invalid fields
+                        [nameInput, emailInput, passwordInput, confirmPasswordInput, phoneInput, addressInput].forEach(input => {
+                            if (!input.classList.contains("is-valid")) input.classList.add("is-invalid");
+                        });
+                    } else {
+                        const newID = Person.lastID + 1;
+                        const newUser = new Person(
+                            newID,
+                            nameInput.value,
+                            emailInput.value,
+                            passwordInput.value,
+                            addressInput.value,
+                            phoneInput.value,
+                            "Customer"
+                        );
+
+                        Person.lastID = newID;
+                        usersArr.push(newUser.getPerson());
+                        localStorage.setItem("Persons", JSON.stringify(usersArr));
+                        localStorage.setItem("lastIDPerson", newID);
+
+                        e.target.classList.add('was-validated'); // Bootstrap validation class
+                    }
+                });
+
+                // Toggle password visibility
+                showPasswordBtn.addEventListener("click", () => togglePasswordVisibility(passwordInput));
+                showconfirmPasswordBtn.addEventListener("click", () => togglePasswordVisibility(confirmPasswordInput));
+
+                function togglePasswordVisibility(input) {
+                    input.type = input.type === "password" ? "text" : "password"; // to show the password
+                    if (input.id != 'confirmPassword') {
+                        if (showPasswordBtn.classList.contains("fa-eye")) {
+                            showPasswordBtn.classList.remove("fa-eye");
+                            showPasswordBtn.classList.add("fa-eye-slash");
+                        } else {
+                            showPasswordBtn.classList.remove("fa-eye-slash");
+                            showPasswordBtn.classList.add("fa-eye");
+                        }
+                    }
+                    else {
+                        if (showconfirmPasswordBtn.classList.contains("fa-eye")) {
+                            showconfirmPasswordBtn.classList.remove("fa-eye");
+                            showconfirmPasswordBtn.classList.add("fa-eye-slash");
+                        } else {
+                            showconfirmPasswordBtn.classList.remove("fa-eye-slash");
+                            showconfirmPasswordBtn.classList.add("fa-eye");
+                        }
+                    }
+                }
+            });
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,1002 @@
+<!-- checkout.html  -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: rgba(245, 245, 245, 0.822);
+}
+
+.customer {
+    height: 100%;
+    margin: auto;
+    margin-top: 4vh;
+    margin-left: 3vw;
+}
+
+.invalid-feedback {
+    color: red;
+}
+
+.valid-feedback {
+    color: green;
+}
+
+.username {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+}
+
+.housenumber {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+}
+
+.city {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+}
+
+hr {
+    width: 37vw;
+    font-size: 50px;
+    margin-left: 1vw;
+    color: black;
+    margin-top: 2vh;
+}
+
+.form-control {
+
+    width: 21vw;
+    margin-top: 3vh;
+}
+
+.flow-control2 {
+    width: 45vw;
+}
+
+.form-controlnodes {
+    margin-left: 0.5vw;
+    width: 42vw;
+    margin-top: 3vh;
+}
+
+.payment {
+    border-top: 2px solid black;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    width: 37vw;
+    margin-left: 2vw;
+    margin-top: 2vh;
+    background-color: rgba(245, 245, 245, 0.822);
+}
+
+.table-container {
+    margin-top: 30px;
+    border-radius: 50px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 40%;
+    margin-left: 800px;
+    margin-top: -900px;
+    border: 2px solid rgb(176, 173, 173);
+}
+
+th,
+td {
+    padding: 8px;
+    text-align: left;
+}
+
+td {
+    border-top: 1px solid rgb(176, 173, 173);
+    border-bottom: 1px solid rgb(176, 173, 173);
+}
+
+.btn {
+    /* margin-top: 800px !important; */
+    padding: 0.5vw 15vw;
+    margin-left: 0.23vw;
+    background-color: black;
+    border-radius: 1px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+.popup {
+    width: 400px;
+    background-color: white;
+    border-radius: 5px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: black;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    z-index: 1000;
+}
+
+.popup.open-popup {
+    visibility: visible;
+    top: 80%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup img {
+    width: 100px;
+    margin-top: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.popup h2 {
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+}
+
+.popup button {
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer1 {
+    margin-top: 20px;
+    padding: 1vw 1vw;
+    width: 100.8%;
+}
+body > div > div > form > div.col-12 > div.cart-details{
+    display: inline-block;
+}
+.bg-dark {
+    background-color: #000000 !important;
+    color: #ffffff; /* Set text to white for contrast */
+}
+@media screen and (min-width: 290px)  and (max-width: 576px) {
+    nav {
+        width: 100%;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    .customerandorder {
+        background-color: white;
+        margin-left: 15px !important;
+        width: 90% !important;
+    
+        margin-bottom: 20px;
+    }
+
+    .username {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+    }
+
+    .housenumber {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+    }
+
+    .city {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+    }
+
+    hr {
+        width: 70vw;
+        font-size: 50px;
+        margin-left: -0.5vw;
+        color: black;
+        margin-top: 2vh;
+    }
+
+    .form-control {
+        width: 80vw;
+        margin-top: 3vh;
+        margin-left: 1px !important;
+    }
+
+    .form-controlnodes {
+        margin-left: 1px;
+        width: 90vw;
+        margin-top: 3vh;
+    }
+
+    .payment {
+        border-top: 2px solid black;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        width: 85vw;
+        margin-left: 2vw;
+        margin-top: 2vh;
+        background-color: rgba(245, 245, 245, 0.822);
+    }
+
+    .btn {
+        padding: 1vw 25vw;
+        margin-left: 1vw;
+        margin-top: 5vw !important;
+        background-color: black;
+        border-radius: none;
+        color: white;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+    .footer1 {
+        margin-top: 10vw;
+        padding: 1vw 4vw;
+        width: 100%;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 80vw !important;
+        margin-left: 1vw;
+        margin-top: 50px;
+        border: 2px solid rgb(176, 173, 173);
+    }
+
+    .flow-control2 {
+        width: 85%;
+
+    }
+  
+}
+
+@media screen and (min-width: 577px) and (max-width: 1366px) {
+    body{
+        overflow-x: hidden;
+    }
+    .username {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+    }
+    .customerandorder {
+        margin-left: 25px !important ;
+        /* height: 290vh; */
+        margin-bottom: 20px;
+    }
+
+    .housenumber {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+    }
+
+    .city {
+        display: grid;
+        grid-template-columns: repeat(1, 2fr);
+    }
+
+    hr {
+        width: 80vw;
+        font-size: 50px;
+        margin-left: 1vw;
+        color: black;
+        margin-top: 2vh;
+    }
+
+    .form-control {
+        width: 55vw;
+        margin-top: 3vh;
+        margin-left: 1px !important;
+    }
+
+    .form-controlnodes {
+        margin-left: 0.5vw;
+        width: 60vw;
+        margin-top: 3vh;
+    }
+
+    .payment {
+        border-top: 2px solid black;
+        border-bottom: none;
+        border-left: none;
+        border-right: none;
+        width: 60vw;
+        margin-left: 2vw;
+        margin-top: 2vh;
+        background-color: rgba(245, 245, 245, 0.822);
+    }
+
+    .btn {
+       /* position: absolute; */
+        padding: 0.5vw 25vw;
+        margin-left: 1vw;
+        margin-top: 2vh !important;
+        background-color: black;
+        color: white;
+        border-radius: 1px;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: black;
+        color: white;
+        cursor: pointer;
+    }
+
+    .footer1 {
+        padding: 1vw 5vw;
+    }
+
+    .flow-control2 {
+        width: 100% !important;
+
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 60vw !important;
+        margin-left: 1vw !important;
+        margin-top: 50px;
+        border: 2px solid rgb(176, 173, 173);
+    }
+}
+    </style>
+</head>
+
+<body>
+    <!--start nav-->
+    <nav class="p-3 mb-2 bg-white text">
+        <a href="../home.html"><img class=" rounded mx-auto d-block" src="../images/made-logo-desktop.svg" width="100" alt="" srcset=""></a>
+    </nav>
+    <!--End of nav-->
+
+<div style="width: 85vw; margin-left: 100px;" class="bg-white customerandorder">
+
+    <div   class="col-12 col-md-8 bg-white customer">
+        <h4>Customer infromation</h4>
+
+        <form class="row g-3 needs-validation" novalidate>
+            <!-- Email -->
+            <div class="col-md-8 flow-control2">
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="validationCustomEmail" placeholder="Email"
+                        aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid email address.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+            </div>
+            <!-- End of Email -->
+            <h4>Billing Details</h4>
+            <div class="username">
+                <div class="col-md-8 col-sm-6">
+                    <input type="text" class="form-control" placeholder="FirstName" id="validationCustomufname" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid FirstName.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+
+                <div  class="col-md-8">
+                    <input type="text" class="form-control ms-4" placeholder="LastName" id="validationCustomlname" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid LasttName.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+            </div>
+            <!-- End of username -->
+            <!-- CompanyNAME -->
+            <!-- <div class="col-md-8 flow-control2">
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="validationCustomCompany" placeholder="CompanyName"
+                        aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid CompanyName.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+            </div> -->
+            <!-- End of COMPANY NAME -->
+            <!-- <div class="col-md-8 flow-control2">
+                <select class="form-select" id="validationCustomcountry" required>
+                </select>
+                <div class="invalid-feedback">
+                    Please select a valid state.
+                </div>
+                <div class="valid-feedback">
+                    Looks good!
+                  </div>
+            </div> -->
+            <!--End of country select-->
+            <div class="housenumber">
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="HouseNumber and StreetName"
+                        id="validationCustomhousestreet" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid House NUmber and street.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+
+                <div class="col-md-8">
+                    <input type="text" class="form-control ms-4" placeholder="Apartment,Suite,Unit,etc. (optional)"
+                        id="validationCustom02" > 
+            </div>
+        </div>
+            <!-- End of hosue number -->
+            <div class="city">
+                <div class="col-md-8">
+                    <input type="text" class="form-control" placeholder="Town/City" id="validationCustomutown" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid Town/city.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+
+                <div  class="col-md-8">
+                    <input type="text" class="form-control ms-4" placeholder="Zipcode" id="validationCustomZip" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid ZipCode.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+                </div>
+            
+            <!-- End of username -->
+            <!-- username -->
+               <!-- phone -->
+               <div class="col-md-8 flow-control2">
+                <div class="input-group has-validation">
+                    <input type="text" class="form-control" id="validationCustomphone" placeholder="PhoneNumber"
+                        aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">
+                        Please enter a valid Phone Number.
+                    </div>
+                    <div class="valid-feedback">
+                        Looks good!
+                      </div>
+                </div>
+            </div>
+            <!-- End of phone -->
+            <!-- <h4>Additional information</h4>
+            <textarea class="form-controlnodes" placeholder="Notes about Your order" id="floatingTextarea"></textarea>
+            <p>Have A capon?</p>
+            <h4>Payment</h4>
+            <div class="payment p-3 mb-2 ">
+                <p>Experience the ease of paying on delivery for a smooth and worry-free shopping journey!</p>
+            </div> -->
+            
+
+            <div class="col-12">
+                <div class="cart-details">
+                    <table>
+                        <tr>
+                            <td>Your order</td>
+                            <!-- <td></td>
+                            <td></td> -->
+                           </tr>
+                           <tr class="checkout-list">
+                            <td class="tdimg"></td>
+                            <td class="tdname"></td>
+                            <td class="tdprice"></td>
+                           </tr>
+                    </table>
+                 
+                   
+                    <!-- <div class="subtotal">Subtotal: $<span class="subtotal-value">0</span></div> -->
+                  </div>
+                <button id="submitBtn" class="btn" type="submit">Place Order $</button>
+
+                <div class="popup" id="popup">
+                    <img src="../images/submitt.png">
+                    <h2>Thank You!</h2>
+                    <p>Your details have been successfully submitted. Thank you!</p>
+                    <button onclick="closspop()">OK</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <!--End of customer-->
+
+    </div>
+      </div>
+ 
+
+
+</div>
+   
+   
+    <script type="module">
+        import { originalOrders as initialOrders } from "../js/database.js"
+import { products as initialProducts } from "../js/database.js";
+import { orders } from "../js/database.js"
+if(localStorage.getItem("originalOrders") == null){
+    localStorage.setItem("originalOrders", JSON.stringify(initialOrders));
+}
+
+if(localStorage.getItem("products") == null){
+    localStorage.setItem("products", JSON.stringify(initialProducts));
+}
+
+if (localStorage.getItem("Orders") == null) {
+    localStorage.setItem("Orders", JSON.stringify(orders));
+    }
+let originalOrders = JSON.parse(localStorage.getItem("originalOrders"));
+let products = JSON.parse(localStorage.getItem("products"));
+
+function updateOriginalOrdersLocalStorage(){
+    localStorage.setItem("originalOrders", JSON.stringify(originalOrders));
+}
+function updateProductsLocalStorage(){
+    localStorage.setItem("products", JSON.stringify(products));
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    if(localStorage.getItem("Active User")){
+        if(JSON.parse(localStorage.getItem("Active User")).role == "Guest"){
+            window.location.href = "../login.html";
+        }
+    }
+    else{
+        window.location.href = "../login.html";
+    };
+    // const countries = document.getElementById("validationCustomcountry");
+    // fetch('https://restcountries.com/v3.1/all').then(res => {
+    //     return res.json();
+    // }).then(data => {
+    //     let output = "";
+    //     data.forEach(country => {
+    //         output += `<option value="${country.name.common}">${country.name.common}</option>`;
+    //     });
+    //     countries.innerHTML = output;
+    // }).catch(error => {
+    //     console.log("Error:", error);
+    // });
+    
+    var emailInput = document.getElementById("validationCustomEmail");
+    var fnameInput = document.getElementById("validationCustomufname");
+    var lnameInput = document.getElementById("validationCustomlname");
+    // var CompanyInput = document.getElementById("validationCustomCompany");
+    var HouseInput = document.getElementById("validationCustomhousestreet");
+    var TownInput = document.getElementById("validationCustomutown");
+    var ZipInput = document.getElementById("validationCustomZip");
+    var phoneinput = document.getElementById("validationCustomphone");
+    var popupdiv = document.getElementById("popup");
+    var submitBtn = document.getElementById("submitBtn");
+    var form = document.querySelector("form");
+
+    emailInput.addEventListener("input", validateEmail);
+    fnameInput.addEventListener("input", validatefname);
+    lnameInput.addEventListener("input", validatelname);
+    // CompanyInput.addEventListener("input", validteCompanyname);
+    HouseInput.addEventListener("input", validateHOusennameandnumber);
+    TownInput.addEventListener("input", validateTown);
+    ZipInput.addEventListener("input", validateZip);
+    phoneinput.addEventListener("input", validatephone);
+
+
+    function openpop() {
+        popupdiv.classList.add("open-popup");
+    }
+
+    function closspop() {
+        popupdiv.classList.remove("open-popup");
+    }
+
+    submitBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        if (!validateEmail() || !validatefname() || !validatelname() ||  !validateHOusennameandnumber() || !validateTown() || !validateZip() || !validatephone()) {
+            event.preventDefault();
+        } else {
+            saveOriginalOrdersData();
+            reduceQuantities();
+            AddToOrder();
+            saveFormData();
+            openpop();
+            clearForm();
+            clearValidationClasses();
+        }
+    });
+
+    function reduceQuantities(){
+        let cartData = JSON.parse(localStorage.getItem("cart"));
+        let quantities = [];
+        for(var key in cartData){
+            quantities.push(cartData[key].cardquantity);
+        }
+        let indices = [];
+        for(var key in cartData){
+            indices.push(products.findIndex(product => product.id == cartData[key].id));
+        }
+        for(let i = 0; i < indices.length; i++){
+            products[indices[i]].quantity -= quantities[i];
+        }
+        updateProductsLocalStorage();
+    }
+    function getOrderId(){
+        return originalOrders[originalOrders.length - 1]["id"] + 1;
+    }
+    function saveOriginalOrdersData() {
+        // { id: 1, products: [1, 2, 6], quantities:[4, 5, 6], date: '15/01/2024', status: 'pending', customerId: 2 }
+        let id = getOrderId();
+        let productsIds = [];
+        let quantities = [];
+        let date = getCurrentDayFormatted();
+        let status = "pending";
+        let customerId = JSON.parse(localStorage.getItem("Active User")).id;
+        let cartData = JSON.parse(localStorage.getItem("cart"));
+        for(var key in cartData){
+            productsIds.push(+key);
+            quantities.push(+cartData[key].cardquantity);
+        }
+        // console.log(productsIds);
+        // console.log(quantities);
+        let newOrder = {id: id, products: productsIds, quantities: quantities, date: date, status: status, customerId: customerId};
+        originalOrders.push(newOrder);
+        updateOriginalOrdersLocalStorage();
+    }
+    function getCurrentDayFormatted(){
+        let date = new Date();
+        let day = String(date.getDate()).padStart(2, '0');
+        let month = String(date.getMonth() + 1).padStart(2, '0');
+        let year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+
+
+    function saveFormData() {
+        var formData = {
+            email: emailInput.value,
+            fname: fnameInput.value,
+            lname: lnameInput.value,
+            // Company: CompanyInput.value,
+            House: HouseInput.value,
+            Town: TownInput.value,
+            Zip: ZipInput.value,
+            phone: phoneinput.value,
+
+        };
+
+        localStorage.setItem("formData", JSON.stringify(formData));
+        localStorage.removeItem("cart");
+    }
+
+    function localeForm() {
+        var savedFormData = localStorage.getItem("formData");
+        if (savedFormData) {
+            var parsedFormData = JSON.parse(savedFormData);
+            emailInput.value = parsedFormData.email;
+            fnameInput.value = parsedFormData.fname;
+            lnameInput.value = parsedFormData.lname;
+            // CompanyInput.value = parsedFormData.Company;
+            HouseInput.value = parsedFormData.House;
+            TownInput.value = parsedFormData.Town;
+            ZipInput.value = parsedFormData.Zip;
+            phoneinput.value = parsedFormData.phone;
+
+        }
+    }
+    function clearValidationClasses() {
+        emailInput.classList.remove("is-valid", "is-invalid");
+        fnameInput.classList.remove("is-valid", "is-invalid");
+        lnameInput.classList.remove("is-valid", "is-invalid");
+        // CompanyInput.classList.remove("is-valid", "is-invalid");
+        HouseInput.classList.remove("is-valid", "is-invalid");
+        TownInput.classList.remove("is-valid", "is-invalid");
+        ZipInput.classList.remove("is-valid", "is-invalid");
+        phoneinput.classList.remove("is-valid", "is-invalid");
+    }
+
+
+    localeForm();
+    function clearForm() {
+        emailInput.value = "";
+        fnameInput.value = "";
+        lnameInput.value = "";
+        // CompanyInput.value = "";
+        HouseInput.value = "";
+        TownInput.value = "";
+        ZipInput.value = "";
+        phoneinput.value = "";
+
+    }
+
+    clearForm();
+
+    function validateEmail() {
+        var email = emailInput.value;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (emailRegex.test(email)) {
+            emailInput.classList.remove("is-invalid")
+            emailInput.classList.add("is-valid");
+            return true;
+        } else {
+            emailInput.classList.remove("is-valid")
+            emailInput.classList.add("is-invalid");
+
+            return false;
+        }
+    }
+    function validatefname() {
+        var fname = fnameInput.value;
+        var fnameRegax = /^[a-zA-Z\- ]+$/;
+
+        if (fnameRegax.test(fname)) {
+            fnameInput.classList.remove("is-invalid")
+            fnameInput.classList.add("is-valid");
+            return true;
+        } else {
+            fnameInput.classList.remove("is-valid")
+            fnameInput.classList.add("is-invalid");
+            return false;
+        }
+    }
+    function validatelname() {
+        var lname = lnameInput.value;
+        var lnameRegax = /^[a-zA-Z\- ]+$/;
+
+        if (lnameRegax.test(lname)) {
+            lnameInput.classList.add("is-valid");
+            lnameInput.classList.remove("is-invalid");
+            return true;
+        } else {
+            lnameInput.classList.remove("is-valid");
+            lnameInput.classList.add("is-invalid");
+            return false;
+        }
+    }
+    function validteCompanyname() {
+        // var Cname = CompanyInput.value;
+        var CnameRegax = /^[a-zA-Z\- ]+$/;
+
+        if (CnameRegax.test(Cname)) {
+            CompanyInput.classList.add("is-valid");
+            CompanyInput.classList.remove("is-invalid")
+            return true;
+        } else {
+            CompanyInput.classList.remove("is-valid");
+            CompanyInput.classList.add("is-invalid");
+            return false;
+        }
+    }
+    function validateHOusennameandnumber() {
+        var Hname = HouseInput.value;
+        var houseRegex = /^[a-zA-Z0-9]+$/;
+
+        if (houseRegex.test(Hname)) {
+            HouseInput.classList.add("is-valid");
+            HouseInput.classList.remove("is-invalid")
+            return true;
+        } else {
+            HouseInput.classList.remove("is-valid");
+            HouseInput.classList.add("is-invalid");
+            return false;
+        }
+
+    }
+    function validateTown() {
+        var tname = TownInput.value;
+        var TownRegax = /^[a-zA-Z0-9]+$/;
+
+        if (TownRegax.test(tname)) {
+            TownInput.classList.add("is-valid");
+            TownInput.classList.remove("is-invalid")
+            return true;
+        } else {
+            TownInput.classList.remove("is-valid");
+            TownInput.classList.add("is-invalid");
+            return false;
+        }
+    }
+    function validateZip() {
+        var znum = ZipInput.value;
+        var zipCodeRegex = /^\d{5}(?:-\d{4})?$/;
+
+        if (zipCodeRegex.test(znum)) {
+            ZipInput.classList.add("is-valid");
+            ZipInput.classList.remove("is-invalid")
+            return true;
+        } else {
+            ZipInput.classList.remove("valid")
+            ZipInput.classList.add("is-invalid");
+            return false;
+        }
+
+    }
+    function validatephone() {
+        var phone = phoneinput.value;
+        var phoneNumberRegex =/^(010|011|012|015)[0-9]{8}$/;
+
+        if (phoneNumberRegex.test(phone)) {
+            phoneinput.classList.add("is-valid");
+            phoneinput.classList.remove("is-invalid")
+            return true;
+        } else {
+            phoneinput.classList.remove("is-valid");
+            phoneinput.classList.add("is-invalid");
+            return false;
+        }
+
+    }
+    // function validteCountry(){
+    //     var Countryname=countries.value
+    //     if (Countryname !== "") {
+    //         countries.classList.add("is-valid");
+    //         return true;
+    //     } else {
+    //         countries.classList.add("is-invalid")
+
+    //     }
+    // }
+
+    // Retrieve cart from localStorage
+    const cartString = localStorage.getItem('cart');
+    const cart = JSON.parse(cartString);
+
+    // Display cart details
+    const checkoutTable = document.querySelector('.checkout-list');
+    const subtotalValue = document.querySelector('.btn');
+
+    let total = 0;
+
+    checkoutTable.innerHTML = '';
+
+    for (const productId in cart) {
+        const productDetails = cart[productId];
+
+
+        const newRow = document.createElement('tr');
+        newRow.classList.add('checkout-list');
+
+
+        const tdimg = document.createElement('td');
+        const tdname = document.createElement('td');
+        const tdprice = document.createElement('td');
+
+
+        tdimg.innerHTML = `<img src="${productDetails.image}"width="50" height="50">`;
+        tdname.textContent = productDetails.name;
+        tdprice.textContent = `$${productDetails.price * productDetails.cardquantity}`;
+
+
+        newRow.appendChild(tdimg);
+        newRow.appendChild(tdname);
+        newRow.appendChild(tdprice);
+
+
+        checkoutTable.appendChild(newRow);
+
+
+        total += productDetails.price * productDetails.cardquantity;
+    }
+
+    subtotalValue.textContent = "PlaceOrder" + "  $" + total.toLocaleString()  ;
+});
+
+function AddToOrder(){
+    let _cart=JSON.parse(localStorage.getItem("cart"))
+    console.log(_cart)
+    if(_cart!=null){
+        let activeUser=JSON.parse(localStorage.getItem("Active User"))
+        let MapCardOrder={
+            _content:Object.keys(_cart).map(cartorder => _cart[cartorder]).map(item => {
+                    delete item.image;
+                    delete item.price;
+                    item["quantity"]=item['cardquantity']
+                    delete item.cardquantity;
+                    return item
+                }),
+            _customerid:activeUser.id,
+            _status:"pending",
+            _dateorder:Date().now
+        }
+        console.log(MapCardOrder._content)
+
+        let ord={
+            content:MapCardOrder._content,
+            userid:MapCardOrder._customerid,
+            _status:MapCardOrder._status,
+            dateorder:MapCardOrder._dateorder
+        }
+            
+            console.log(ord)
+            let _orders=JSON.parse(localStorage.getItem("Orders"))
+            console.log(_orders.length)
+
+            let NewOrder={
+                orderId:_orders.length+1,
+                _products_:Object.values(ord.content),
+                Order_date:Date.now(),
+                Delivered_date: new Date(new Date(Date.now()).setDate(new Date().getDate() + 3)),
+                status:ord._status,
+                customerId:ord.userid}
+                console.log(NewOrder);
+                _orders.push(NewOrder)
+            //     let updateQuantity=NewOrder._products_.map(item=>{
+            //         let obj={}
+            //         obj.id=item.id
+            //         obj.quantity=item.quantity
+            //         return(obj)
+            //     })
+            //     console.log(updateQuantity)
+            //     let PRODUCT=JSON.parse(localStorage.getItem("products"))
+            //     let repeated=[]
+            //     PRODUCT.forEach(item=>console.log(item.quantity))
+            //     // for(let i=0;i<updateQuantity.length;i++){
+            //     //         if(repeated.includes(updateQuantity[i])){
+            //     //             continue;
+            //     //         }
+            //     //     for(let j=0;j<PRODUCT.length;j++){
+            //     //         if(updateQuantity[i].id==PRODUCT[j].id){
+            //     //             PRODUCT[j].quantity=PRODUCT[j].quantity-updateQuantity[i].quantity
+            //     //             repeated.push(updateQuantity[i])
+            //     //         }
+            //     //     }
+            //     // } 
+            //     PRODUCT.forEach(item=>console.log(item.quantity))
+            // console.log(NewOrder)
+           
+           // console.log(_orders)
+            //localStorage.setItem("products",JSON.stringify(PRODUCT))
+            localStorage.setItem("Orders",JSON.stringify(_orders))
+    }
+    }
+
+    
+    </script>
+
+
+
+</body>
+</html>
+
+
